@@ -68,7 +68,17 @@ const lodash = require('lodash');
 // console.log(math.multiply(5,3));
 // console.log(math.divide(5,3));
 
-const numbers = [1,2,3,4,5];
-console.log(numbers);
-console.log(lodash.reverse(numbers));
+// const numbers = [1,2,3,4,5];
+// console.log(numbers);
+// console.log(lodash.reverse(numbers));
 
+const readableStream = fs.createReadStream('example.txt',{encoding: 'UTF8'});
+readableStream.on('data',(chunk)=>{
+    console.log(chunk);
+});
+readableStream.on('end',()=>{
+    console.log('Finished reading the file.');
+});
+readableStream.on('error',(err)=>{
+    console.log('Error',err);
+});
